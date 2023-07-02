@@ -1,0 +1,13 @@
+use: utc # Can be "utc" or "tz" - need to pick one
+
+# if utc:
+utc-offset: -7
+
+# if tz:
+# (tz strings can be found in pendulum.timezones)
+tz: US/Pacific
+
+server_folder: server
+horizons_folder: Gateworld
+
+autodelete_old_bak_folder: true
