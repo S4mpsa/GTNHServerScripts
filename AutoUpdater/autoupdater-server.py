@@ -1,15 +1,16 @@
-serverDirectory = "/home/minecraft/gtnh/ballers"
+serverDirectory = "/home/minecraft/gtnh/servers/"
 
-
+SERVER_PORT = 16384
 
 
 import socket
 import os
 import re
 import json
+import signal
+import sys
 
 CHUNKSIZE = 1_000_000
-SERVER_PORT = 16384
 fluff = [".jar", ".dirty", "1.7.10", "alpha", "beta", "universal", " ", "_MC", "GTNH"]
 os.chdir(serverDirectory)
 
@@ -103,7 +104,14 @@ for mod in os.listdir(os.path.join(serverDirectory, "mods")):
     path, name, version =  getModName(mod)
     existingMods[name] = (path, name, version)
 
+def disconnect_signal(sig, frame):
+    print("")
+    print('Closing autoupdater host')
+    server.close()
+    sys.exit(0)
+
 with server:
+    signal.signal(signal.SIGINT, disconnect_signal)
     while True:
         try:
             print("Waiting for connection")
