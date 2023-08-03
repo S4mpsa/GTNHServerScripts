@@ -40,9 +40,8 @@ def getBackupPath():
 
     server_root = Path(__file__).parent / config['server_folder']
     backup_path = server_root / 'backups'
-    horizons_name = config['horizons_name']
+    horizons_name = config['horizons_folder']
 
-    timezone = input('Enter Pendulum timezone to convert backup dates to (eg US/Pacific): ')
     if config['use'] == 'utc':
         timezone = config['utc-offset']
     elif config['use'] == 'tz':
