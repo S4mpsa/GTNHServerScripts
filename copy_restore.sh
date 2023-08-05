@@ -1,11 +1,11 @@
 #!/bin/bash
 
-cp RestoreScripts/* /home/minecraft/gtnh/servers/ballers
-cp RestoreScripts/* /home/minecraft/gtnh/servers/gdcloud
-cp RestoreScripts/* /home/minecraft/gtnh/servers/greesy
-cp RestoreScripts/* /home/minecraft/gtnh/servers/runakai
-cp RestoreScripts/* /home/minecraft/gtnh/servers/skyblock
-cp RestoreScripts/* /home/minecraft/gtnh/servers/theepicgamer
+cp RestoreScripts/*.py /home/minecraft/gtnh/servers/ballers
+cp RestoreScripts/*.py /home/minecraft/gtnh/servers/gdcloud
+cp RestoreScripts/*.py /home/minecraft/gtnh/servers/greesy
+cp RestoreScripts/*.py /home/minecraft/gtnh/servers/runakai
+cp RestoreScripts/*.py /home/minecraft/gtnh/servers/skyblock
+cp RestoreScripts/*.py /home/minecraft/gtnh/servers/theepicgamer
 chown -R sampsa /home/minecraft/gtnh/servers/ballers
 chown -R gdcloud /home/minecraft/gtnh/servers/gdcloud
 chown -R greesy /home/minecraft/gtnh/servers/greesy
