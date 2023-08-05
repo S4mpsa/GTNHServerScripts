@@ -1,3 +1,4 @@
+import math
 import os
 import re
 import shutil
@@ -79,9 +80,16 @@ def serverTimestampToTZ(utc_str, tz):
     utc_str += '-+0000'
     backup_date = pendulum.from_format(utc_str, 'YYYY-MM-DD-HH-mm-ss-ZZ')
 
-    converted = backup_date.in_tz(tz=tz).format('YYYY-MM-DD HH:mm')
+    now = pendulum.now()
+    time_ago = now - backup_date
 
-    return converted
+    finstr = []
+    converted = backup_date.in_tz(tz=tz).format('YYYY-MM-DD HH:mm')
+    finstr.append(converted)
+    finstr.append(f'{math.floor(time_ago.hours)}h {math.floor(time_ago.minutes)}m ago')
+    finstr = ' - '.join(finstr)
+
+    return finstr
 
 
 def standardUnzip(server_root, backup_zip_path, unzipped_backup_path, horizons_name):
