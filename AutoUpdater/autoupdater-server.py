@@ -100,9 +100,12 @@ def receiveModlist(client):
 server = startServer()
 
 existingMods = {}
-for mod in os.listdir(os.path.join(serverDirectory, "mods")):
-    path, name, version =  getModName(mod)
-    existingMods[name] = (path, name, version)
+
+def updateModDirectory():
+    for mod in os.listdir(os.path.join(serverDirectory, "mods")):
+        existingMods = {}
+        path, name, version =  getModName(mod)
+        existingMods[name] = (path, name, version)
 
 def disconnect_signal(sig, frame):
     print("")
@@ -114,8 +117,10 @@ with server:
     signal.signal(signal.SIGINT, disconnect_signal)
     while True:
         try:
+            updateModDirectory()
             print("Waiting for connection")
             client, addr = server.accept()
+            client.settimeout(10.0)
             print("Connected to " + str(addr))
             mods = receiveModlist(client)
             mismatchedMods = []

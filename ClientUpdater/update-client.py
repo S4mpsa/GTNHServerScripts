@@ -1,5 +1,5 @@
 #Change this to the instance you want to modify (Keep the r in front)
-clientDirectory = r"C:\Minecraft\Prism\instances\1.7.10\.minecraft"
+clientDirectory = r"C:\Minecraft\Prism\instances\GregTech- New Horizons 2.3.4\.minecraft"
 
 #Place the modpack .zips in the same folder as this script
 
