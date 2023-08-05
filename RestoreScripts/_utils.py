@@ -75,9 +75,7 @@ def getBackupPath():
 
 
 def serverTimestampToTZ(utc_str, tz):
-    # I don't understand why this is UTC+1 when both Helsinki and Falkenstein
-    #   are UTC+2, but it works...
-    utc_str += '-+0000'
+    utc_str += '-+0200' # Falkenstein (hetzner)
     backup_date = pendulum.from_format(utc_str, 'YYYY-MM-DD-HH-mm-ss-ZZ')
 
     now = pendulum.now()
