@@ -1,4 +1,4 @@
-serverDirectory = "/home/minecraft/gtnh/servers/"
+serverDirectory = "/home/minecraft/gtnh/servers/ballers/server"
 
 SERVER_PORT = 16384
 
@@ -102,8 +102,8 @@ server = startServer()
 existingMods = {}
 
 def updateModDirectory():
+    existingMods.clear()
     for mod in os.listdir(os.path.join(serverDirectory, "mods")):
-        existingMods = {}
         path, name, version =  getModName(mod)
         existingMods[name] = (path, name, version)
 
@@ -118,9 +118,9 @@ with server:
     while True:
         try:
             updateModDirectory()
-            print("Waiting for connection")
+            print("Waiting for connection - # of mods: {}".format(len(existingMods)) )
             client, addr = server.accept()
-            client.settimeout(10.0)
+            client.settimeout(300.0)
             print("Connected to " + str(addr))
             mods = receiveModlist(client)
             mismatchedMods = []
